@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>访问 Traffic Games - Polytrack 游戏平台</title>
     <meta name="description" content="探索 polytrack 游戏世界，访问 Traffic Games 平台，体验最新的 polytrack 游戏和娱乐内容。">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <style>
         :root {
             --color-primary: #2563eb;
@@ -359,7 +360,135 @@
         .content-section:nth-child(3) {
             animation-delay: 0.2s;
         }
+
+        /* Fullscreen Test Styles */
+        .fullscreen-container {
+            text-align: center;
+            margin: var(--spacing-lg) 0;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            border: 2px solid var(--color-border);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: var(--color-bg);
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .fullscreen-info {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md);
+            background: rgba(37, 99, 235, 0.1);
+            border-radius: var(--radius-sm);
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .fullscreen-mode .iframe-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 9999;
+            border: none;
+            border-radius: 0;
+        }
+
+        @media (max-width: 640px) {
+            .iframe-wrapper {
+                height: 400px;
+            }
+        }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const fullscreenBtn = document.getElementById('fullscreen-btn');
+            const exitFullscreenBtn = document.getElementById('exit-fullscreen-btn');
+            const iframe = document.getElementById('test-iframe');
+            const video = document.getElementById('test-video');
+            const videoFullscreenBtn = document.getElementById('video-fullscreen-btn');
+            const videoInlineBtn = document.getElementById('video-inline-btn');
+
+            if (fullscreenBtn && exitFullscreenBtn && iframe) {
+                fullscreenBtn.addEventListener('click', function() {
+                    if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                    } else if (iframe.webkitRequestFullscreen) {
+                        iframe.webkitRequestFullscreen();
+                    } else if (iframe.mozRequestFullScreen) {
+                        iframe.mozRequestFullScreen();
+                    } else if (iframe.msRequestFullscreen) {
+                        iframe.msRequestFullscreen();
+                    }
+                });
+
+                exitFullscreenBtn.addEventListener('click', function() {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                });
+
+                document.addEventListener('fullscreenchange', handleFullscreenChange);
+                document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+                document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+                document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+
+                function handleFullscreenChange() {
+                    const isFullscreen = document.fullscreenElement || 
+                                        document.webkitFullscreenElement || 
+                                        document.mozFullScreenElement || 
+                                        document.msFullscreenElement;
+                    
+                    if (isFullscreen) {
+                        fullscreenBtn.style.display = 'none';
+                        exitFullscreenBtn.style.display = 'inline-flex';
+                        document.body.classList.add('fullscreen-mode');
+                    } else {
+                        fullscreenBtn.style.display = 'inline-flex';
+                        exitFullscreenBtn.style.display = 'none';
+                        document.body.classList.remove('fullscreen-mode');
+                    }
+                }
+            }
+
+            if (video && videoFullscreenBtn) {
+                videoFullscreenBtn.addEventListener('click', function() {
+                    if (video.webkitEnterFullscreen) {
+                        video.webkitEnterFullscreen();
+                    } else if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) {
+                        video.webkitRequestFullscreen();
+                    } else {
+                        console.log('全屏API不可用，尝试播放视频');
+                        video.play();
+                    }
+                });
+
+                if (videoInlineBtn) {
+                    videoInlineBtn.addEventListener('click', function() {
+                        video.pause();
+                        video.currentTime = 0;
+                    });
+                }
+            }
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -373,6 +502,22 @@
             <h2>立即访问 <span class="polytrack-highlight">Polytrack</span> 游戏平台</h2>
             <a href="https://www.trafficgames.online/" class="traffic-link" target="_blank" rel="noopener noreferrer">进入 Traffic Games</a>
             <p>点击上方链接，开启您的 polytrack 游戏之旅</p>
+        </div>
+        
+        <div class="content-section">
+            <h2>推荐访问站点</h2>
+            <p>以下是本页面已添加到项目中的游戏和娱乐站点。点击链接即可在新窗口中打开：</p>
+            <ul style="list-style: none; padding: 0; margin: var(--spacing-lg) 0;">
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://www.soccerbros.space/" target="_blank" rel="noopener noreferrer">https://www.soccerbros.space/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://www.popcorngame.online/" target="_blank" rel="noopener noreferrer">https://www.popcorngame.online/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://minefunio.space/" target="_blank" rel="noopener noreferrer">https://minefunio.space/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://openfront.space/" target="_blank" rel="noopener noreferrer">https://openfront.space/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://www.skillwarz.online/" target="_blank" rel="noopener noreferrer">https://www.skillwarz.online/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://veckio.space/" target="_blank" rel="noopener noreferrer">https://veckio.space/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://www.trafficgames.online/" target="_blank" rel="noopener noreferrer">https://www.trafficgames.online/</a></li>
+                <li style="margin-bottom: var(--spacing-sm);"><a href="https://twilightprincess.website/" target="_blank" rel="noopener noreferrer">https://twilightprincess.website/</a></li>
+                <li><a href="https://www.wrestlebros.space/" target="_blank" rel="noopener noreferrer">https://www.wrestlebros.space/</a></li>
+            </ul>
         </div>
         
         <div class="content-section">
@@ -436,6 +581,59 @@
             </ol>
             
             <p>选择 polytrack 游戏，选择 Traffic Games 平台，您将体验到最精彩的游戏世界。</p>
+        </div>
+
+        <div class="content-section">
+            <h2>iOS 全屏测试</h2>
+            <p>点击下方按钮进入全屏模式测试iOS全屏功能</p>
+            <div class="fullscreen-container">
+                <div class="iframe-wrapper">
+                    <iframe 
+                        src="https://www.trafficgames.online/" 
+                        id="test-iframe"
+                        allow="fullscreen"
+                        webkitallowfullscreen="true"
+                        mozallowfullscreen="true"
+                        allowfullscreen="true">
+                    </iframe>
+                </div>
+                
+                <div class="video-fullscreen-wrapper" style="margin-top: 30px; padding: 20px; background: #f0f9ff; border-radius: 12px;">
+                    <h3 style="margin-bottom: 15px; font-size: 1rem; color: #1f2937;">iOS 兼容的全屏测试（使用 Video 元素）</h3>
+                    <video id="test-video" 
+                           controls 
+                           playsinline
+                           webkit-playsinline
+                           style="width: 100%; max-width: 600px; border-radius: 8px; background: #000;"
+                           poster="">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        您的浏览器不支持 video 标签
+                    </video>
+                    <div style="margin-top: 15px;">
+                        <button id="video-fullscreen-btn" class="traffic-link">
+                            视频全屏模式
+                        </button>
+                        <button id="video-inline-btn" class="traffic-link" style="background: var(--color-text-secondary); margin-left: 10px;">
+                            内联播放
+                        </button>
+                    </div>
+                    <p class="fullscreen-info" style="margin-top: 15px;">提示：iOS全屏功能仅支持video元素。请使用此测试区域验证iOS全屏API是否正常工作。</p>
+                </div>
+                
+                <button id="fullscreen-btn" class="traffic-link" style="margin-top: 20px;">
+                    进入全屏模式（桌面浏览器）
+                </button>
+                <button id="exit-fullscreen-btn" class="traffic-link" style="margin-top: 20px; display: none; background: var(--color-accent);">
+                    退出全屏模式
+                </button>
+                <div class="fullscreen-info" style="margin-top: 20px;">
+                    <strong>iOS 全屏限制说明：</strong><br>
+                    1. iOS Safari 不支持 iframe 的全屏API<br>
+                    2. iOS 全屏功能仅支持 &lt;video&gt; 元素<br>
+                    3. 需要添加 playsinline 和 webkit-playsinline 属性<br>
+                    4. iOS 13+ 需要用户交互才能触发全屏
+                </div>
+            </div>
         </div>
         
         <footer>

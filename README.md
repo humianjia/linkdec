@@ -2,7 +2,19 @@
 
 ## 项目介绍
 
-本项目是一个用于引入 `https://www.trafficgames.online/` 链接的HTML页面，主要功能是提供一个美观的入口页面，引导用户访问Traffic Games平台。
+本项目是一个用于引入多个游戏和娱乐站点链接的 HTML 页面，主要功能是提供一个美观的入口页面，引导用户访问以下推荐的平台。
+
+## 已添加链接
+
+- https://www.soccerbros.space/
+- https://www.popcorngame.online/
+- https://minefunio.space/
+- https://openfront.space/
+- https://www.skillwarz.online/
+- https://veckio.space/
+- https://www.trafficgames.online/
+- https://twilightprincess.website/
+- https://www.wrestlebros.space/
 
 ## 功能特性
 
