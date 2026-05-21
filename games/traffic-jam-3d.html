@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Read our overview of Traffic Jam 3D, learn the controls, and launch the local browser build from a dedicated page on Traffic Games Online.">
+    <meta name="keywords" content="Traffic Jam 3D, browser racing game, traffic game, local webgl game, traffic games online">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Traffic Jam 3D on Traffic Games Online">
+    <meta property="og:description" content="A dedicated page for Traffic Jam 3D with controls, tips, and a lazy-loaded local browser build.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.trafficgames.online/games/traffic-jam-3d.html">
+    <title>Traffic Jam 3D - Traffic Games Online</title>
+    <link rel="canonical" href="https://www.trafficgames.online/games/traffic-jam-3d.html">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="../favicon.ico" sizes="32x32" type="image/x-icon">
+    <link rel="icon" href="../favicon.ico" sizes="16x16" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7534347140708021" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --bg: #09111f;
+            --panel: rgba(15, 27, 49, 0.94);
+            --panel-soft: rgba(15, 23, 42, 0.56);
+            --border: rgba(148, 163, 184, 0.16);
+            --text: #f8fafc;
+            --muted: #cbd5e1;
+            --green: #4ade80;
+            --blue: #38bdf8;
+            --shadow: 0 18px 46px rgba(2, 6, 23, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 30%),
+                linear-gradient(180deg, #08101d 0%, #0b1425 45%, #09111f 100%);
+        }
+
+        .wrap {
+            width: min(1120px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .site-header,
+        .site-footer {
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .site-footer {
+            border-bottom: 0;
+            border-top: 1px solid rgba(148, 163, 184, 0.1);
+            margin-top: 48px;
+        }
+
+        .header-row,
+        .footer-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 18px 0;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+        }
+
+        .brand-mark {
+            width: 42px;
+            height: 42px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, rgba(74, 222, 128, 0.2), rgba(56, 189, 248, 0.22));
+            border: 1px solid rgba(74, 222, 128, 0.28);
+        }
+
+        nav,
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+        }
+
+        nav a,
+        .footer-links a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        nav a:hover,
+        .footer-links a:hover {
+            color: var(--text);
+        }
+
+        main {
+            padding: 48px 0 0;
+        }
+
+        .hero,
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+            gap: 28px;
+            padding: 32px;
+        }
+
+        .hero h1,
+        .panel h2,
+        .panel h3 {
+            margin: 0 0 14px;
+            letter-spacing: -0.04em;
+            line-height: 1.06;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.1rem, 5vw, 3.6rem);
+        }
+
+        .panel h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+        }
+
+        p,
+        li {
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+            border-radius: 22px;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .panel {
+            margin-top: 24px;
+            padding: 28px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 18px;
+            border-radius: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            font: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--green), #22c55e);
+            color: #052e16;
+        }
+
+        .btn-secondary {
+            background: rgba(15, 23, 42, 0.56);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            color: var(--text);
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            padding: 20px;
+            border-radius: 22px;
+            background: var(--panel-soft);
+            border: 1px solid rgba(148, 163, 184, 0.14);
+        }
+
+        .launch-shell {
+            overflow: hidden;
+            border-radius: 24px;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(2, 6, 23, 0.6);
+        }
+
+        .launch-shell iframe {
+            display: block;
+            width: 100%;
+            min-height: 680px;
+            border: 0;
+            background: #020617;
+        }
+
+        .launch-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+        }
+
+        .launch-note {
+            padding: 18px 20px 0;
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .columns,
+            .header-row,
+            .footer-row {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrap header-row">
+            <a href="/" class="brand">
+                <span class="brand-mark">TG</span>
+                <span>Traffic Games Online</span>
+            </a>
+            <nav aria-label="Primary">
+                <a href="/">Home</a>
+                <a href="../categories.html">Categories</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../privacy-policy.html">Privacy</a>
+                <a href="../content-policy.html">Content Policy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <section class="hero">
+            <div>
+                <h1>Traffic Jam 3D</h1>
+                <p>Traffic Jam 3D is the main playable page in the current public review set. It is a straightforward lane-dodging game built around speed control, fast reactions, and short browser sessions that work well on both desktop and mobile browsers.</p>
+                <p>The page intentionally keeps the structure simple: a written overview, a control summary, a few practical tips, and a lazy-loaded local build so there is meaningful publisher content even before the player presses start.</p>
+                <div class="actions">
+                    <button type="button" class="btn btn-primary" id="launchGame">Load the local game build</button>
+                    <a href="../categories.html" class="btn btn-secondary">Back to the category guides</a>
+                </div>
+            </div>
+            <div>
+                <img src="../img/screenshots/ss1.png" alt="Traffic Jam 3D screenshot">
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>What this page helps you understand before you play</h2>
+            <div class="columns">
+                <article class="card">
+                    <h3>Core loop</h3>
+                    <p>You stay alive by reading traffic early, finding clean gaps, and avoiding late reactions. The challenge is less about memorizing tracks and more about maintaining calm at higher speed.</p>
+                </article>
+                <article class="card">
+                    <h3>Best fit</h3>
+                    <p>This page is best for players who enjoy quick browser runs, simple controls, and a strong sense of pace without a long setup or tutorial.</p>
+                </article>
+                <article class="card">
+                    <h3>Controls</h3>
+                    <p>Use the arrow keys to accelerate, brake, and move between lanes. On touch devices, the embedded build provides on-screen controls once it loads.</p>
+                </article>
+                <article class="card">
+                    <h3>First-session tip</h3>
+                    <p>Do not stare at the hood of your own car. Watch two lanes ahead so that lane changes feel planned instead of desperate.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Launch the local build</h2>
+            <p>The game build below is hosted inside this project. Press the button once, allow a short download if needed, and then wait for the build to finish initializing before you start steering.</p>
+            <div class="launch-shell">
+                <div class="launch-head">
+                    <strong>Embedded build</strong>
+                    <span>Source: local <code>/games/index.html</code></span>
+                </div>
+                <p class="launch-note" id="launchStatus">The build is idle until you press the launch button.</p>
+                <iframe id="gameFrame" title="Traffic Jam 3D local game build" loading="lazy" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h2>Troubleshooting notes</h2>
+            <div class="columns">
+                <article class="card">
+                    <h3>If the build seems blank</h3>
+                    <p>Give the page a little extra time. WebGL builds often need a quiet first load while assets are cached by the browser.</p>
+                </article>
+                <article class="card">
+                    <h3>If the device feels warm</h3>
+                    <p>Try fullscreen only after the game has started, and close background tabs on older phones or low-memory browsers.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrap footer-row">
+            <div>
+                <strong>Traffic Games Online</strong>
+                <p>The featured local game page in the May 7, 2026 review-ready release.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/">Home</a>
+                <a href="../categories.html">Categories</a>
+                <a href="../about.html">About</a>
+                <a href="../contact.html">Contact</a>
+                <a href="../privacy-policy.html">Privacy Policy</a>
+                <a href="../cookies.html">Cookie Policy</a>
+                <a href="../terms.html">Terms of Service</a>
+                <a href="../content-policy.html">Content Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var launchButton = document.getElementById('launchGame');
+            var frame = document.getElementById('gameFrame');
+            var status = document.getElementById('launchStatus');
+            var loaded = false;
+
+            if (!launchButton || !frame || !status) {
+                return;
+            }
+
+            launchButton.addEventListener('click', function () {
+                if (!loaded) {
+                    frame.src = 'index.html';
+                    status.textContent = 'Loading the local build. The first start can take a little longer while the browser prepares the files.';
+                    launchButton.textContent = 'Reload the game build';
+                    loaded = true;
+                    return;
+                }
+
+                frame.src = 'index.html';
+                status.textContent = 'Reloading the local build.';
+            });
+
+            frame.addEventListener('load', function () {
+                status.textContent = 'The build has loaded. If controls do not react immediately, click once inside the game frame.';
+            });
+        })();
+    </script>
+</body>
+</html>
